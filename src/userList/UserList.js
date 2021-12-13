@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 class UserList extends Component {
     constructor(props) {
         super(props);
-        this.state = {showData : true, groupId: 10000}
+        this.state = {showData : false, groupId: 10000}
         console.log('constructor')
     }
 
@@ -21,11 +21,7 @@ class UserList extends Component {
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         console.log('should update')
-
-        if (nextProps.groupId !== this.props.groupId){
-            return true
-        } else return false;
-
+        return true
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -54,14 +50,14 @@ class UserList extends Component {
         return <div>
             {
               this.state.showData && <div className="data-div">
-                {/*<div>{this.state.groupId}</div>*/}
+                <div>{this.state.groupId}</div>
                 <div>{this.props.groupId}</div>
-                {/*<div>{this.props.data}</div>*/}
+                <div>{this.props.data}</div>
             </div>
             }
-            {/*<button onClick={this.show}>Show Data</button>*/}
-            {/*<button onClick={this.hide}>Hide Data</button>*/}
-            {/*<button onClick={this.updateGroupId}>Update Group Id</button>*/}
+            <button onClick={this.show}>Show Data</button>
+            <button onClick={this.hide}>Hide Data</button>
+            <button onClick={this.updateGroupId}>Update Group Id</button>
 
         </div>
     }
