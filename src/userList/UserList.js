@@ -4,33 +4,27 @@ import React, {Component} from 'react'
 class UserList extends Component {
     constructor(props) {
         super(props);
-        this.state = {showData : false, groupId: 10000}
-        console.log('constructor')
+        this.state = {showData : false, groupId: '', name:'', age:''}
     }
 
     componentDidMount() {
-        console.log('did mount')
 
     }
 
 
     componentWillReceiveProps(nextProps, nextContext) {
-        console.log('will recive props')
 
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-        console.log('should update')
         return true
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log('did update')
 
     }
 
     componentWillUnmount() {
-        console.log('will unmount')
     }
 
     show = ()=>{
@@ -45,8 +39,11 @@ class UserList extends Component {
         this.setState({groupId: this.state.groupId + 10})
     }
 
+    updateText = (evt, key)=>{
+        this.setState({'groupId': evt.target.value})
+    }
+
     render (){
-        console.log('render')
         return <div>
             {
               this.state.showData && <div className="data-div">
@@ -55,6 +52,8 @@ class UserList extends Component {
                 <div>{this.props.data}</div>
             </div>
             }
+
+            <input type={"text"} value={this.state.groupId} onChange={(evt)=>{this.updateText(evt, 'groupId')}}/>
             <button onClick={this.show}>Show Data</button>
             <button onClick={this.hide}>Hide Data</button>
             <button onClick={this.updateGroupId}>Update Group Id</button>
