@@ -3,7 +3,7 @@ name: Restrict Branch Delete
 on:
   push:
     branches:
-      - main
+      - feature
 
 jobs:
   check_branch_delete:
