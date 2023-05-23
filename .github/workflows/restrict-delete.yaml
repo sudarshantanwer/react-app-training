@@ -3,7 +3,7 @@ name: Restrict Branch Delete
 on:
   push:
     branches:
-      - feature
+      - hello576
 
 jobs:
   check_branch_delete:
