@@ -1,0 +1,21 @@
+name: Branch Name Restriction
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  check_branch_name:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check Branch Name
+        run: |
+          branch_name=$(git branch --show-current)
+          regex="^[A-Za-z_-]+$"
+          
+          if [[ ! $branch_name =~ $regex ]]; then
+            echo "Error: Invalid branch name. Branch names must start with 'feature/' or 'bugfix/' and can only contain alphanumeric characters, hyphens, and underscores."
+            exit 1
+          fi
